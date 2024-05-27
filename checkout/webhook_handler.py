@@ -1,10 +1,14 @@
 from django.http import HttpResponse
+import os
+if os.path.exists("env.py"):
+  import env 
 
 from .models import Order, OrderLineItem
 from products.models import Product
 
 import json
 import time
+import stripe
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
